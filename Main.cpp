@@ -11,14 +11,18 @@ void Deixtra(int**&, int*&, int*&, int*&, int&, int&, int&, int&);
 
 int main()
 {
+    setlocale(LC_ALL, "ru");
     int** matr;
     int* distance;
     int* tops;
     int* shortcut;
     int size;
     int k = 1;
-    int begin_index = 0; //точка от которой вычислиются расстояния (вершина - 1)
-    int end = 5; //вершина до которой нужно вычислить расстояние (вершина - 1)
+    int begin_index = 0; //точка от которой вычисляются расстояния (вершина - 1)
+    int end;
+    cout << "Введите вершину до которой нужно найти кратчайший маршрут: ";
+    cin >> end;
+    end = end - 1;
     int end1 = end;
     InitMatr(matr, size);
     PrintMatr(matr, size);
@@ -56,7 +60,7 @@ void InitMatr(int**& matr, int &size)
 
 void PrintMatr(int**& matr, int& size)
 {
-    cout << "Link matrix:" << endl;
+    cout << "Матрица:" << endl;
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -70,21 +74,21 @@ void PrintMatr(int**& matr, int& size)
 void PrintResults(int*& shortcut, int*& distance, int& size, int& k, int& end)
 {
     ofstream f("MatrixOuput.txt");
-    cout << "Shortest distances to the tops:" << endl;
-    f << "Shortest distances to the tops:" << endl;
+    cout << "Кратчайшие расстояния до вершин:" << endl;
+    f << "Кратчайшие расстояния до вершин:" << endl;
     for (int i = 0; i < size; i++)
     {
-        cout << "Top" << "[" << i + 1 << "]" << " " << distance[i] << endl;
-        f << "Top" << "[" << i + 1 << "]" << " " << distance[i] << endl;
+        cout << "Вершина" << "[" << i + 1 << "]" << " " << distance[i] << endl;
+        f << "Вершина" << "[" << i + 1 << "]" << " " << distance[i] << endl;
     }
     cout << endl;
-    cout << "Shortest route from 1 to " << end + 1 << endl;
+    cout << "Кратчайший путь от 1 до " << end + 1 << endl;
     f << endl;
-    f << "Shortest route from 1 to " << end + 1 << endl;
-    for (int i = k - 1; i >= 0; i--)
+    f << "Кратчайший путь от 1 до " << end + 1 << endl;
+    for (int j = k - 1; j >= 0; j--)
     {
-        cout << setw(5) << shortcut[i];
-        f << " " << shortcut[i];
+        cout << setw(5) << shortcut[j];
+        f << " " << shortcut[j];
     }
     f.close();
 }
