@@ -1,0 +1,10 @@
+Shortest distances to the tops:
+Top[1] 0
+Top[2] 7
+Top[3] 9
+Top[4] 20
+Top[5] 20
+Top[6] 11
+
+Shortest route from 1 to 6
+ 1 3 6
